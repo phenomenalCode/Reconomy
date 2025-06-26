@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-In Page</title>
+    <link rel="stylesheet"href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <!-- Logo on the Left Side -->
+        <div class="logo">
+            <img src="media/images/reconomy-logo.png" alt="Company Logo">
+        </div>
+
+        <!-- Admin Login on the Right Side -->
+        <div id="admin_login" class="admin-login">
+            <form id="admin_login_form" >
+                <input class="gray-input" id="input_username" type="text" name="username" placeholder="Username" required>
+                <input class="gray-input" id="input_password" type="password" autocomplete="current-password" name="password" placeholder="Password" required>
+                <button id="btn_admin_submit" type="submit">Login</button>
+             
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container">
+        <h1>Deltagare Incheckning</h1>
+
+        <!-- Check-In Form -->
+        <div class="check-in">
+            <form id="check_in_form" action="/checkin" method="POST">
+                <div id="div_id_number">
+                    <label id="id_number_label" for="id_number">ID nummer:</label>
+                    <input class="gray-input" type="text" id="id_number" name="id_number" />
+                    <button id="btn_find" type="button">Find</button>
+                </div>
+                <br>
+                <label id="alphabet_label" for="alphabet_table">Välj efternamns forsta bokstav:</label>
+                <div  id="alphabet_container" >
+                    <table id="alphabet_table">
+                        <tr>
+                            <td><a class="alphabet" href="#" data-letter="a">a</a></td>
+                            <td><a class="alphabet" href="#" data-letter="b">b</a></td>
+                            <td><a class="alphabet" href="#" data-letter="c">c</a></td>
+                            <td><a class="alphabet" href="#" data-letter="d">d</a></td>
+                            <td><a class="alphabet" href="#" data-letter="e">e</a></td>
+                            <td><a class="alphabet" href="#" data-letter="f">f</a></td>
+                            <td><a class="alphabet" href="#" data-letter="g">g</a></td>
+                            <td><a class="alphabet" href="#" data-letter="h">h</a></td>
+                            <td><a class="alphabet" href="#" data-letter="i">i</a></td>
+                            <td><a class="alphabet" href="#" data-letter="j">j</a></td>
+                            <td><a class="alphabet" href="#" data-letter="k">k</a></td>
+                            <td><a class="alphabet" href="#" data-letter="l">l</a></td>
+                            <td><a class="alphabet" href="#" data-letter="m">m</a></td>
+                            <td><a class="alphabet" href="#" data-letter="n">n</a></td>
+                            <td><a class="alphabet" href="#" data-letter="o">o</a></td>
+                            <td><a class="alphabet" href="#" data-letter="p">p</a></td>
+                            <td><a class="alphabet" href="#" data-letter="q">q</a></td>
+                            <td><a class="alphabet" href="#" data-letter="r">r</a></td>
+                            <td><a class="alphabet" href="#" data-letter="s">s</a></td>
+                            <td><a class="alphabet" href="#" data-letter="t">t</a></td>
+                            <td><a class="alphabet" href="#" data-letter="u">u</a></td>
+                            <td><a class="alphabet" href="#" data-letter="v">v</a></td>
+                            <td><a class="alphabet" href="#" data-letter="w">w</a></td>
+                            <td><a class="alphabet" href="#" data-letter="x">x</a></td>
+                            <td><a class="alphabet" href="#" data-letter="y">y</a></td>
+                            <td><a class="alphabet" href="#" data-letter="z">z</a></td>
+                        </tr>
+                    </table>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            document.querySelectorAll('.alphabet').forEach(function(link) {
+                                link.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    // Remove active class from all
+                                    document.querySelectorAll('.alphabet').forEach(a => a.classList.remove('active'));
+                                    // Add active class to clicked
+                                    this.classList.add('active');
+                                    // Custom event or logic here, e.g. filter participants
+                                    const letter = this.getAttribute('data-letter');
+                                    // Example: dispatch event or call function
+                                    // filterParticipantsByLetter(letter);
+                                });
+                            });
+                        });
+                    </script>
+                </div> 
+                <br> 
+                <br>
+                <div id="employee_select_container">
+                    <label for="participant">Välj ditt namn:</label>
+                    <select id="participant" name="participant_name" required></select> 
+                </div>
+                <br>
+                <br>
+
+                <div class="status-option">
+                    <label id="log_event_in_container">
+                        <input id="log_event_in" type="radio" name="log_event_type" value="kom"> Kom
+                        <i class="fas fa-walking"></i>
+                        
+                    </label>
+                    <label id="log_event_out_container">
+                        <input id="log_event_out" type="radio" name="log_event_type" value="gick">Gick
+                        <i class="fas fa-running"></i> 
+                    </label>
+                </div>  
+                <br>
+                 
+                <div id="comment_container" >
+                    <label id="lbl_log_event_comment" for="log_event_comment">Comments:</label>
+                    <input class="gray-input" type="text" id="log_event_comment" name="log_event_comment" placeholder="Note late arrival or early departure" />
+                </div> 
+                <br> 
+
+                <button type="submit">Check In</button>
+            </form>
+        </div>
+    </div>
+    <div id="success_popup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Success!</h2>
+            <p id="success_label">Du har checkat </p>
+            <button id="close_popup">OK</button>
+        </div>
+    </div>
+  
+
+    <script>
+        window.env = {
+          BASE_URL: "http://localhost:8081"
+        };
+      </script>
+    
+        <script  type="module"  src="src/index.js"></script>
+       
+</body>
+</html>

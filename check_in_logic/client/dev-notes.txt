@@ -1,0 +1,17 @@
+Admin Page:
+1. include the logo as it is tn the main Page
+2. left hand side should hold vertical menu (not really needed now but the app will likely expand)
+3. i think it opens with an employees table in the main content area. At least for now, 
+the admin tasks center on the employees.
+4. clicking an employee from the table should open a page having to do with the employee.
+5. the employee page should have thier company data with a log event table.
+6. the log event table should have a date range contol to select log events
+7. perhaps the daily hours is calculated in a summary card
+8. the average hours could be included in the summary card
+9. if summary hour calculations have invalid log event days a flag should be indicated for the admin to resolve
+10. an invalid log event date should not be included in the summary calculations.
+11. a flagged date in the log event table could create a log event of the missing log event type with a red button
+in the timestamp field 
+12. the admin can click the red button to popup a  time input and a reason text input.
+13. admin inputs the appropriate time and reason then submits the form. the system created log event is then written
+to the database and another summary calculation is performed.

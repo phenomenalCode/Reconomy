@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="media/images/reconomy-logo.png" alt="Reconomy Logo">
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <nav class="sidebar">
+      <ul>
+        <li><strong>Admin Menu</strong></li>
+        <li><a id="reloadEmployeePage" href="#">Reload Employees Table</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+      <div>
+        <button id="open-logout-window">Log out</button>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="search-section">
+        <input id="searchName" placeholder="Name" type="text" />
+        <input id="searchID" placeholder="Employee ID" type="text" />
+        <input id="searchStartDate" type="date" title="Start Date" />
+        <input id="searchEndDate" type="date" title="End Date" />
+        <button id="searchButton">Search</button>
+        <button id="clearSearch">Clear</button>
+      </section>
+
+      <section id="paginationSection">
+        <div id="paginationControls"></div>
+      </section>
+
+      <section>
+        <h2>Employee List &amp; Status</h2>
+        <div class="employeeTable-container">
+          <table id="employeeTable" border="1" cellspacing="0" cellpadding="5">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Hours Worked</th>
+                <th>Logged Events</th>
+              </tr>
+            </thead>
+            <tbody id="employeeTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="employeeDetails" style="display:none;">
+        <h2>Employee Details</h2>
+        <div id="employeeCompanyData">
+          <p><strong>Name:</strong> <span id="empName"></span></p>
+          <p><strong>Start Date:</strong> <span id="empStart"></span></p>
+          <p><strong>End Date:</strong> <span id="empEnd"></span></p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Summary</h3>
+          <p><strong>Daily Hours:</strong> <span id="dailyHours">--</span></p>
+          <p><strong>Average Hours:</strong> <span id="avgHours">--</span></p>
+          <p><strong>Flagged Days:</strong> <span id="flagCount">--</span></p>
+        </div>
+
+        <label>Date Range:</label>
+        <input type="date" id="logStartDate" />
+        <input type="date" id="logEndDate" />
+        <button id="loadLogEvents">Load Log Events</button>
+
+        <div id="logEventTableContainer">
+          <h3>Log Events</h3>
+          <table id="logEventTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Comment</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody id="logEventTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modals -->
+      <div id="addEmployeeModal" class="modal" style="display:none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add Employee</h2>
+          <label>Name:</label>
+          <input type="text" id="addNamnInput" placeholder="First Last" />
+          <button id="addEmployeeButton">Save</button>
+        </div>
+      </div>
+
+      <div id="removeEmployeeModal" class="modal" style="display:none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Remove Employee</h2>
+          <ul id="employeeListToRemove"></ul>
+          <button id="removeEmployeeButton">Remove Selected</button>
+        </div>
+      </div>
+
+      <div id="updateEmployeeModal" class="modal" style="display:none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Update Employee</h2>
+          <label for="updateNamnInput">Name:</label>
+          <input type="text" id="updateNamnInput" placeholder="First Last" />
+          <label for="updateStartDateInput">Start Date:</label>
+          <input type="date" id="updateStartDateInput" />
+          <label for="updateEndDateInput">End Date:</label>
+          <input type="date" id="updateEndDateInput" />
+          <label for="updateWorkCommitmentInput">Location / Work Commitment:</label>
+          <input type="text" id="updateWorkCommitmentInput" />
+          <button id="updateEmployeeSaveButton">Save Changes</button>
+        </div>
+      </div>
+
+      <div id="logHistoryModal" class="modal" style="display:none">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="logEventHistory">Log History</h2>
+          <div id="logEventsContainer" style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:10px;">
+            <em>Select a "Logged Events" button to view event history</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <section class="admin-actions">
+        <button id="openAddEmployee">Add Employee</button>
+        <button id="openRemoveEmployee">Remove Employee</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="src/admin.js"></script>
+  <script type="module" src="src/config.js"></script>
+  <script type="module" src="src/logout.js"></script>
+  <script type="module" src="src/search.js"></script>
+  <script type="module" src="src/calc.js"></script>
+  <script type="module" src="src/edit-work-period.js"></script>
+</body>
+
+<footer>
+  <p>&copy; 2023 Reconomy. All rights reserved.</p>
+</footer>
+</html>

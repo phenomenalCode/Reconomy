@@ -1,0 +1,21 @@
+{
+  "name": "reconomy_timeclock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "timeclock_app.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carterjamesrome",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "reconomy_timeclock": "file:"
+  }
+}

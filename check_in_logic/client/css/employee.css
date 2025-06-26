@@ -1,0 +1,63 @@
+body{
+	color:black;
+	width: 95%;
+	background-color: bisque;
+	box-sizing: border-box;
+}
+#employees-table{
+	color:black;
+	width: 100%;
+	box-sizing: border-box;
+}
+#employees-table tr:hover td {
+	background: #efefef;
+	cursor: pointer;
+  }
+
+.column-header{
+	color:black;
+}
+.column-data{
+	color:black;
+}
+.flex-container {
+	display: flex;
+	background-color: DodgerBlue;
+	box-sizing: border-box;
+  }
+  
+  .flex-container > button {
+	box-sizing: border-box;
+	background-color: #f1f1f1;
+	width:150px;
+	height:30px;
+	font-size: 15px;
+	margin-top:5px;
+	margin-left: 20px;
+  }
+  
+  
+  #table-navigation{
+	color:black;
+	width:530px;
+	height: 40px;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right:auto;
+	margin-top: 20px;
+}
+/*
+#prev-btn{
+	box-sizing: border-box;
+	color:black;
+}
+#next-btn{
+	box-sizing: border-box;
+	color:black;
+}
+#page-num-label{
+	box-sizing: border-box;
+	color:black;
+}
+*/
+

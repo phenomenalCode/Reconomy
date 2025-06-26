@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    background: url('/check_in_logic/client/media/images/scandinavian-office-interior-with-plant-3d-free-photo.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo img {
+    max-height: 60px;
+}
+
+.admin-login {
+    display: flex;
+    align-items: center;
+}
+
+.admin-login form {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-login input[type="text"],
+.admin-login input[type="password"] {
+    background-color: #dcdcdc !important;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.admin-login button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-login button:hover {
+    background-color: #218838;
+}
+
+.container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    flex: 1; 
+}
+
+.check-in form {
+    margin-top: 20px;
+}
+
+.check-in input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.check-in button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#log_event_in_container{
+    margin-right: 15px;
+}
+#log_event_out_container{
+    margin-left: 15px;
+}
+
+#comment_container {
+    margin-top: 10px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+#comment_container label {
+    display: inline;
+    margin-bottom: 5px;
+}
+#comment_container input {
+    display: inline;
+    margin-left: 15px;
+}
+
+.fas {
+    color: #28a745; /* Example: green color */
+}
+
+/* Change color for specific icons */
+.fas.fa-walking {
+    color: #2196f3; /* Example: orange color */
+}
+
+.fas.fa-running {
+    color: #ff5722 /* Example: blue color */
+}
+
+.fas.fa-question {
+    color: #9c27b0; /* Example: purple color */
+}
+/* Pop-Up Overlay */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Make sure it's on top of other content */
+}
+
+.popup-content {
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.popup-content h2 {
+    margin: 0 0 10px 0;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #218838;
+}
+#div_id_number{
+    padding-top: 5px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+#btn_find {
+    position: relative;
+    top: 0px;
+    height: 30px;
+    width: 60px;
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+}
+#id_number {
+    padding: 0px 3px 0px 3px;
+    width: 50px;
+    height: 28px;
+    margin-right: 10px;
+}
+#alphabet_container {
+    padding-top: 15px;
+}
+#alphabet_container  td{
+    width: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    border-width: 1px;
+    border-color: black;
+}
+#alphabet_container  a {
+    margin: 0px 1px 0px 1px;
+    transition: 0.3s;
+}
+#alphabet_container  td:hover{
+    background-color: #218838;
+    color:#ffffff;
+    margin: 0px 3px 0px 3px;
+    font-weight:bold;
+    cursor:pointer;
+}
+#alphabet_table, th, td {
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #dcdcdc;
+    border: #28a745;
+    border-width: 3px;
+    border: 1px solid;
+}
+#log_event_commant {
+    margin-top: 10px;
+}
+
+.gray-input {
+    background-color: #dcdcdc;
+}
