@@ -4,7 +4,7 @@
   "description": "timeclock webserver application",
   "main": "timeclock_server.js",
   "scripts": {
-    "start": "node timeclock_server.js",
+    "start": "node check_in_logic/server/timeclock_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dariusjcarter",

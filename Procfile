@@ -1,2 +1,1 @@
-
-web: node timeclock_server.js
+web: npm start
