@@ -1,2 +1,2 @@
-export const baseUrl  = "http://localhost:8081/api/employees";  // For employee endpoints
-export const adminUrl = "http://localhost:8081";                // For admin login
+export const baseUrl  = "https://reconomy-api.onrender.com/api/employees";  // For employee endpoints
+export const adminUrl = "https://reconomy-api.onrender.com";                // For admin login

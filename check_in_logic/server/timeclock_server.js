@@ -14,7 +14,10 @@ const PORT = process.env.PORT || 8081;
 const CLIENT_APP_DIR = process.env.CLIENT_APP_DIR;
 
 // Whitelist your frontend origin(s) here
-const allowedOrigins = ['http://127.0.0.1:5501'];
+const allowedOrigins = [
+  'http://127.0.0.1:5501',                       // for local dev
+  'https://darius-reconomy-proj.netlify.app'    // for deployed frontend
+];
 
 console.log(`client_app_dir: ${CLIENT_APP_DIR}, host:${process.env.DB_HOST}, user: ${process.env.DB_USER}, password:  ${process.env.DB_PASSWORD}, database: ${process.env.DB_DATABASE}`);
 
