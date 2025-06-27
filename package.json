@@ -1,26 +1,23 @@
 {
-  "name": "timeclock_server",
+  "name": "timeclock_app",
   "version": "1.0.0",
-  "description": "timeclock webserver application",
-  "main": "timeclock_server.js",
+  "description": "",
+  "main": "timeclock_app.js",
+  "private": true,
   "scripts": {
-    "start": "node check_in_logic/server/timeclock_server.js",
+    "start": "node timeclock_app.js",
+    "dev": "nodemon timeclock_app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dariusjcarter",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.2",
-    "express-session": "^1.18.1",
-    "mysql2": "^3.11.0",
-    "webpack": "^5.93.0",
-    "webpack-cli": "^5.1.4"
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
   },
   "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
     "nodemon": "^3.1.4"
   }
 }
