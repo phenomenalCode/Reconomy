@@ -1,75 +1,84 @@
+// timeclock_server.js
+
 const express = require('express');
-const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
 const path = require('path');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
+// Routers
 const employeeRouter = require('./routes/employee_routes');
 const loginRouter = require('./routes/login_routes');
 const logEventRouter = require('./routes/log_event_routes');
 const errorMiddleware = require('./helpers/error_handling');
 
+// App setup
 const app = express();
 const PORT = process.env.PORT || 8081;
-
-// Use absolute path to client dir (either from env or default)
 const CLIENT_APP_DIR = path.resolve(process.env.CLIENT_APP_DIR || 'check_in_logic/client');
 
-// CORS setup
+// --- CORS Setup ---
 const allowedOrigins = [
   'http://127.0.0.1:5501',
   'https://darius-reconomy-proj.netlify.app',
   'https://reconomy.herokuapp.com',
 ];
 
-const corsOptions = {
+app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
     callback(new Error('Not allowed by CORS'));
   },
-  credentials: true,
-};
+  credentials: true
+}));
 
-app.use(cors(corsOptions));
-
-// Parse request bodies
+// --- Body Parsers ---
 app.use(bodyParser.json());
 app.use(express.json());
 
-// Session middleware
+// --- Session ---
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET || 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }, // Set true in production with HTTPS
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // true if in production with HTTPS
+    sameSite: 'lax'
+  }
 }));
 
-// Log all incoming requests
+// --- Logging ---
 app.use((req, res, next) => {
-  console.log(`Request ${req.method} ${req.url} - Body: ${JSON.stringify(req.body)}`);
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
 
-// Serve all static frontend files from client dir
-app.use(express.static(CLIENT_APP_DIR));
+// --- Static File Serving ---
+app.use(express.static(CLIENT_APP_DIR)); // Serves JS, CSS, images, etc.
 
-// API routes
+// --- API Routes ---
 app.use('/admin', loginRouter);
 app.use('/log_events', logEventRouter);
 app.use('/api/employees', employeeRouter);
 
-// Catch-all fallback (optional for SPA routes)
+// --- Fallback Route for SPA ---
 app.get('*', (req, res) => {
-  res.sendFile(path.join(CLIENT_APP_DIR, 'index.html'));
+  const indexPath = path.join(CLIENT_APP_DIR, 'index.html');
+  res.sendFile(indexPath, err => {
+    if (err) {
+      console.error('❌ Failed to serve index.html:', err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 });
 
-// Error handler
+// --- Error Middleware ---
 app.use(errorMiddleware);
 
-// Start server
+// --- Start Server ---
 app.listen(PORT, () => {
-  console.log(`✅ Timeclock server running on http://localhost:${PORT}`);
+  console.log(`✅ Timeclock server running at http://localhost:${PORT}`);
 });
