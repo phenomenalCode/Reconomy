@@ -11,6 +11,9 @@
   },
   "author": "dariusjcarter",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.x"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "mysql2": "^3.11.0"
