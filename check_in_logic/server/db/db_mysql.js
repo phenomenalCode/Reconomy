@@ -3,10 +3,10 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
+  host: process.env.HOST,           // Not DB_HOST, use HOST
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  database: process.env.DB_DATABASE || 'd70v8guajikn7536', // fallback if missing in env
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
