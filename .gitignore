@@ -1,0 +1,33 @@
+# Ignore node dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# dotenv environment files
+.env
+.env.local
+
+# Logs
+logs
+*.log
+log/
+
+# OS crap
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+.cache/
+coverage/
+
+# IDE stuff
+.vscode/
+.idea/
+*.swp
+
+# Optional: if deploying frontend separately
+check_in_logic/client/node_modules/
+check_in_logic/client/dist/
