@@ -2,11 +2,11 @@
   "name": "timeclock_app",
   "version": "1.0.0",
   "description": "",
-  "main": "check_in_logic/server/timeclock_app.js",
-"scripts": {
-  "start": "node check_in_logic/server/timeclock_app.js",
-  "dev": "nodemon check_in_logic/server/timeclock_app.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "check_in_logic/server/timeclock_server.js",
+  "scripts": {
+    "start": "node check_in_logic/server/timeclock_server.js",
+    "dev": "nodemon check_in_logic/server/timeclock_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dariusjcarter",
   "license": "ISC",
