@@ -17,20 +17,18 @@ const errorMiddleware = require('./helpers/error_handling');
 const app = express();
 const PORT = process.env.PORT || 8081;
 const CLIENT_APP_DIR = path.resolve(process.env.CLIENT_APP_DIR || 'check_in_logic/client');
-
-// --- CORS Setup ---
 const isProduction = process.env.NODE_ENV === 'production';
 
+// --- CORS Setup ---
 const allowedOrigins = [
   'https://darius-reconomy-proj.netlify.app',
   'https://reconomy.herokuapp.com',
 ];
-
 if (!isProduction) {
-  allowedOrigins.push('http://127.0.0.1:5501');
+  allowedOrigins.push('http://127.0.0.1:5501', 'http://localhost:5501');
 }
 
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
@@ -40,40 +38,39 @@ app.use(cors({
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-}));
+};
 
-app.options('*', cors()); // Preflight for all routes
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Preflight
 
-// --- Body Parsers ---
+// --- Middleware ---
 app.use(bodyParser.json());
 app.use(express.json());
 
-// --- Session ---
 app.use(session({
   secret: process.env.SESSION_SECRET || 'keyboard cat',
   resave: false,
   saveUninitialized: false,
   cookie: {
     secure: isProduction,
-    sameSite: 'lax'
-  }
+    sameSite: 'lax',
+  },
 }));
 
-// --- Logging ---
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
 
-// --- Static File Serving ---
+// --- Static Serving ---
 app.use(express.static(CLIENT_APP_DIR));
 
-// --- API Routes ---
+// --- Routes ---
 app.use('/admin', loginRouter);
 app.use('/log_events', logEventRouter);
 app.use('/api/employees', employeeRouter);
 
-// --- Fallback Route for SPA ---
+// --- Fallback for SPA ---
 app.get('*', (req, res) => {
   const indexPath = path.join(CLIENT_APP_DIR, 'index.html');
   res.sendFile(indexPath, err => {

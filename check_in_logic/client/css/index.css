@@ -3,8 +3,7 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     height: 100%;
-    background:  url('./media/images/scandinavian-office-interior-with-plant-3d-free-photo.jpeg') no-repeat center center fixed;
-
+    background: url('/check_in_logic/client/media/images/scandinavian-office-interior-with-plant-3d-free-photo.jpeg') no-repeat center center fixed;
     background-size: cover;
 }
 
