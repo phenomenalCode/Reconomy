@@ -1,5 +1,6 @@
 const db = require('../db/db_mysql.js'); // must be using .promise()
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
 
 exports.logIn = async function (userName, password) {
   console.log("@login model logIn");

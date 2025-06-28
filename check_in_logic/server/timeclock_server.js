@@ -1,50 +1,36 @@
-// timeclock_server.js
-
-const express = require('express');
-const session = require('express-session');
-const cors = require('cors');
-const path = require('path');
-const bodyParser = require('body-parser');
 require('dotenv').config();
+const express  = require('express');
+const session  = require('express-session');
+const cors     = require('cors');
+const path     = require('path');
 
-// Routers
-const employeeRouter = require('./routes/employee_routes');
-const loginRouter = require('./routes/login_routes');
-const logEventRouter = require('./routes/log_event_routes');
-const errorMiddleware = require('./helpers/error_handling');
+const employeeRouter   = require('./routes/employee_routes');
+const loginRouter      = require('./routes/login_routes');
+const logEventRouter   = require('./routes/log_event_routes');
+const errorMiddleware  = require('./helpers/error_handling');
 
-// App setup
 const app = express();
 const PORT = process.env.PORT || 8081;
+
+// Absolute path to client folder (React/Vite/etc.)
 const CLIENT_APP_DIR = path.resolve(process.env.CLIENT_APP_DIR || 'check_in_logic/client');
-const isProduction = process.env.NODE_ENV === 'production';
 
-// --- CORS Setup ---
-const allowedOrigins = [
-  'https://darius-reconomy-proj.netlify.app',
-  'https://reconomy.herokuapp.com',
-];
-if (!isProduction) {
-  allowedOrigins.push('http://127.0.0.1:5501', 'http://localhost:5501');
-}
-
+// ─────────────────────────────────────────────────────────────────────────────
+// CORS SETUP — GLOBAL & HEROKU-PROOF
+// ─────────────────────────────────────────────────────────────────────────────
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    console.warn('❌ Blocked CORS origin:', origin);
-    callback(new Error('Not allowed by CORS'));
-  },
+  origin: "https://darius-reconomy-proj.netlify.app", // Your real frontend domain
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
+// Use only this cors middleware
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Preflight
 
-// --- Middleware ---
-app.use(bodyParser.json());
+// ─────────────────────────────────────────────────────────────────────────────
+// MIDDLEWARE
+// ─────────────────────────────────────────────────────────────────────────────
 app.use(express.json());
 
 app.use(session({
@@ -52,28 +38,34 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: isProduction,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
   },
 }));
 
+// Request logging (for debugging)
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
 
-// --- Static Serving ---
+// ─────────────────────────────────────────────────────────────────────────────
+// STATIC ASSETS
+// ─────────────────────────────────────────────────────────────────────────────
 app.use(express.static(CLIENT_APP_DIR));
 
-// --- Routes ---
-app.use('/admin', loginRouter);
-app.use('/log_events', logEventRouter);
+// ─────────────────────────────────────────────────────────────────────────────
+// API ROUTES
+// ─────────────────────────────────────────────────────────────────────────────
+app.use('/admin',         loginRouter);
+app.use('/log_events',    logEventRouter);
 app.use('/api/employees', employeeRouter);
 
-// --- Fallback for SPA ---
+// ─────────────────────────────────────────────────────────────────────────────
+// SPA FALLBACK — For client-side routing
+// ─────────────────────────────────────────────────────────────────────────────
 app.get('*', (req, res) => {
-  const indexPath = path.join(CLIENT_APP_DIR, 'index.html');
-  res.sendFile(indexPath, err => {
+  res.sendFile(path.join(CLIENT_APP_DIR, 'index.html'), err => {
     if (err) {
       console.error('❌ Failed to serve index.html:', err);
       res.status(500).send('Internal Server Error');
@@ -81,10 +73,14 @@ app.get('*', (req, res) => {
   });
 });
 
-// --- Error Middleware ---
+// ─────────────────────────────────────────────────────────────────────────────
+// ERROR HANDLING
+// ─────────────────────────────────────────────────────────────────────────────
 app.use(errorMiddleware);
 
-// --- Start Server ---
+// ─────────────────────────────────────────────────────────────────────────────
+// START SERVER
+// ─────────────────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`✅ Timeclock server running at http://localhost:${PORT}`);
+  console.log(`✅ Timeclock server running on port ${PORT}`);
 });
