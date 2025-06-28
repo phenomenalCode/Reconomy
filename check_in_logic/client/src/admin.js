@@ -19,9 +19,9 @@ let currentEmployeeId = null;
 
 // Make fetchEmployeeLogEvents global
 window.fetchEmployeeLogEvents = function fetchEmployeeLogEvents(employeeId, employeeData = null) {
-  fetch(`${adminUrl}/log_events/${employeeId}`) ,{
+   return fetch(`${adminUrl}/log_events/${employeeId}`, {  
      credentials: "include"
-  }
+   })
     .then(res => res.ok ? res.json() : Promise.reject("Failed to fetch log events"))
     .then(events => {
       renderEvents(events, employeeId);
@@ -31,6 +31,7 @@ window.fetchEmployeeLogEvents = function fetchEmployeeLogEvents(employeeId, empl
         updateEmployeeHoursInTable(employeeData.employee_id, dailyHours);
       }
     })
+
     .catch(err => {
       console.error("Log fetch error:", err);
       alert("Could not load log events.");
