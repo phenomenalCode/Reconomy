@@ -19,21 +19,30 @@ const PORT = process.env.PORT || 8081;
 const CLIENT_APP_DIR = path.resolve(process.env.CLIENT_APP_DIR || 'check_in_logic/client');
 
 // --- CORS Setup ---
+const isProduction = process.env.NODE_ENV === 'production';
+
 const allowedOrigins = [
-  'http://127.0.0.1:5501',
   'https://darius-reconomy-proj.netlify.app',
   'https://reconomy.herokuapp.com',
 ];
+
+if (!isProduction) {
+  allowedOrigins.push('http://127.0.0.1:5501');
+}
 
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
+    console.warn('❌ Blocked CORS origin:', origin);
     callback(new Error('Not allowed by CORS'));
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
+
+app.options('*', cors()); // Preflight for all routes
 
 // --- Body Parsers ---
 app.use(bodyParser.json());
@@ -45,7 +54,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // true if in production with HTTPS
+    secure: isProduction,
     sameSite: 'lax'
   }
 }));
@@ -57,7 +66,7 @@ app.use((req, res, next) => {
 });
 
 // --- Static File Serving ---
-app.use(express.static(CLIENT_APP_DIR)); // Serves JS, CSS, images, etc.
+app.use(express.static(CLIENT_APP_DIR));
 
 // --- API Routes ---
 app.use('/admin', loginRouter);
