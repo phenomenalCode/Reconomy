@@ -48,6 +48,7 @@ function updateEmployeeDates(employeeId) {
 
   fetch(`${baseUrl}/${employeeId}`, {
     method: 'PUT',
+  credentials: "include",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   })

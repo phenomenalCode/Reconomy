@@ -78,6 +78,7 @@ async function logIn(e) {
     const res = await fetch(`${adminUrl}/admin/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(payload)
     });
 
@@ -106,6 +107,7 @@ async function getEmployeeById(empId) {
     const res = await fetch(`${baseUrl}/id`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       // Use employee_id key instead of id
       body: JSON.stringify({ employee_id: empId })
     });
@@ -165,6 +167,7 @@ async function _fetchByLastName(url, body) {
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+       credentials: "include",
       body: JSON.stringify(body)
     });
 
@@ -256,6 +259,7 @@ async function onCheckInSubmit(e) {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(logEvent)
       }
     );

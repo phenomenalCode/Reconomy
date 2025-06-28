@@ -19,7 +19,9 @@ let currentEmployeeId = null;
 
 // Make fetchEmployeeLogEvents global
 window.fetchEmployeeLogEvents = function fetchEmployeeLogEvents(employeeId, employeeData = null) {
-  fetch(`${adminUrl}/log_events/${employeeId}`)
+  fetch(`${adminUrl}/log_events/${employeeId}`) ,{
+     credentials: "include"
+  }
     .then(res => res.ok ? res.json() : Promise.reject("Failed to fetch log events"))
     .then(events => {
       renderEvents(events, employeeId);
@@ -163,8 +165,10 @@ window.loadEmployees = async function (page = 1) {
   const url = `${baseUrl}?${params.toString()}`;
   console.log("Fetching URL:", url);
 
-  try {
-    const response = await fetch(url);
+  try {const response = await fetch(url, {
+  credentials: "include"
+});
+
     if (!response.ok) throw new Error(`Failed to load: ${response.status}`);
 
     const data = await response.json();
@@ -196,7 +200,9 @@ window.loadEmployees = async function (page = 1) {
         try {
           if (!emp.latest_log_date || !emp.latest_log_date.startsWith(todayStr)) return;
 
-          const res = await fetch(`${adminUrl}/log_events/${emp.employee_id}`);
+          const res = await fetch(`${adminUrl}/log_events/${emp.employee_id}`, {
+  credentials: "include"
+});
           if (!res.ok) throw new Error("Failed to fetch log events");
 
           const events = await res.json();
@@ -336,6 +342,7 @@ function updateLogEvents(employeeId) {
   fetch(`${adminUrl}/log_events/${employeeId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
+     credentials: "include",
     body: JSON.stringify({ events: updatedEvents }),
   })
     .then(res => {
