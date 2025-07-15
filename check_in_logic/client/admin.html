@@ -6,7 +6,14 @@
   <title>Admin Dashboard</title>
   <meta name="description" content="Admin dashboard for managing employee records at Reconomy." />
   <link rel="stylesheet" href="css/admin.css" />
+  
+  <!-- Preload fonts if used -->
+  <!--
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  -->
+
   <style>
+    /* Modals visibility */
     .modal[aria-hidden="false"] {
       display: block !important;
       opacity: 1 !important;
@@ -14,6 +21,28 @@
     }
     .modal[aria-hidden="true"] {
       display: none !important;
+    }
+
+    /* Reserve space for the logEventsContainer to reduce CLS */
+    #logEventsContainer {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 300px; /* Reserve space to prevent layout shift */
+      box-sizing: border-box;
+    }
+
+    /* Reserve height for dynamic content areas */
+    #employeeDetails {
+      min-height: 250px; /* adjust as needed */
+    }
+
+    /* Fix the section causing CLS (likely search-section or employee list) */
+    .search-section, 
+    #paginationSection, 
+    [aria-label="Employee Table"] {
+      min-height: 200px; /* or a height that matches typical content */
     }
   </style>
 </head>
@@ -117,11 +146,7 @@
         <input type="date" id="logEndDate" />
         <button id="loadLogEvents" type="button">Load Log Events</button>
 
-        <div
-          id="logEventTableContainer"
-          role="region"
-          aria-label="Log Events Table"
-        >
+        <div id="logEventTableContainer" role="region" aria-label="Log Events Table">
           <h3>Log Events</h3>
           <table id="logEventTable" cellspacing="0" cellpadding="5" border="1">
             <thead>
@@ -229,9 +254,7 @@
             &times;
           </button>
           <h2 id="logEventHistory">Log History</h2>
-          <div
-            id="logEventsContainer"
-          >
+          <div id="logEventsContainer">
             <em>Select a "Logged Events" button to view event history</em>
           </div>
         </div>
@@ -245,13 +268,13 @@
     </main>
   </div>
 
-  <!-- JavaScript Modules -->
-  <script rel="preload" type="module" src="src/admin.js"></script>
-  <script type="module" src="src/config.js"></script>
-  <script type="module" src="src/logout.js"></script>
-  <script type="module" src="src/search.js"></script>
-  <script type="module" src="src/calc.js"></script>
-  <script type="module" src="src/edit-work-period.js"></script>
+  <!-- JavaScript Modules with defer for better loading -->
+  <script type="module" src="src/admin.js" defer></script>
+  <script type="module" src="src/config.js" defer></script>
+  <script type="module" src="src/logout.js" defer></script>
+  <script type="module" src="src/search.js" defer></script>
+  <script type="module" src="src/calc.js" defer></script>
+  <script type="module" src="src/edit-work-period.js" defer></script>
 
   <footer role="contentinfo">
     <p>&copy; 2023 Reconomy. All rights reserved. Created by Darius Carter.</p>
