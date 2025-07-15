@@ -54,11 +54,6 @@ header .logo {
   grid-template-columns: 240px 1fr;
   min-height: calc(100vh - 60px);
 }
-@media (max-width: 800px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ===== Sidebar ===== */
 .sidebar {
@@ -84,18 +79,12 @@ header .logo {
 .sidebar a:hover,
 .sidebar a:focus {
   background: rgba(0,0,0,0.15);
-  outline: none;
 }
 
 /* ===== Main Content ===== */
 .main-content {
   padding: var(--spacing-lg);
   background: var(--color-surface);
-}
-@media (max-width: 800px) {
-  .main-content {
-    padding: var(--spacing-md);
-  }
 }
 
 /* ===== Search Section ===== */
@@ -120,7 +109,6 @@ header .logo {
 .search-section input:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(64,145,108,0.3);
-  outline: none;
 }
 .search-section button {
   background: var(--color-primary);
@@ -133,38 +121,34 @@ header .logo {
 .search-section button:hover,
 .search-section button:focus {
   background: var(--color-hover);
-  outline: none;
 }
 
 /* ===== Pagination Controls ===== */
 #paginationControls {
   display: flex;
   justify-content: center;
-  gap: 0.5rem; /* var(--spacing-sm) */
-  margin-bottom: 1.5rem; /* var(--spacing-lg) */
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
-
 #paginationControls button {
-  padding: 0.4rem 0.8rem; /* var(--spacing-xs) var(--spacing-sm) */
-  border: 1px solid #388e3c; /* medium-dark green */
-  background: #fdf6ec; /* very light green */
-  border-radius: 0.375rem; /* var(--radius-sm) */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid #388e3c;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 600;
-  color: #2e7d32; /* dark green */
+  color: #2e7d32;
   box-shadow: 0 2px 4px rgba(56, 142, 60, 0.2);
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
 #paginationControls button:hover:not(.active),
 #paginationControls button:focus:not(.active) {
-  background: #4caf50; /* medium green */
-  color: white;
-  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
-  outline: none;
+  background: #4caf50;
+  color: #fff;
 }
 #paginationControls button.active {
-  background: #1b4332; /* dark green */
-  color: white;
+  background: #1b4332;
+  color: #fff;
   border-color: #2e7d32;
   box-shadow: 0 4px 8px rgba(46, 125, 50, 0.6);
   cursor: default;
@@ -218,13 +202,13 @@ tbody tr:nth-child(even) {
   z-index: 2000;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: var(--spacing-sm);
   overflow-y: auto;
   backdrop-filter: saturate(180%) blur(8px);
 }
 .modal-content {
   background: var(--color-surface);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 600px;
@@ -232,13 +216,11 @@ tbody tr:nth-child(even) {
   position: relative;
   color: var(--color-hover);
   font-size: 1rem;
-  user-select: text;
-  outline-offset: 4px;
 }
 .close {
   position: absolute;
-  top: var(--spacing-sm);
-  right: var(--spacing-sm);
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
   font-size: 1.6rem;
   font-weight: 700;
   cursor: pointer;
@@ -250,10 +232,9 @@ tbody tr:nth-child(even) {
 .close:hover,
 .close:focus {
   color: var(--color-hover);
-  outline: none;
 }
 
-/* Scrollable containers inside modals */
+/* ===== Scrollable Boxes ===== */
 #logEventsContainer,
 #employeeListToRemove,
 #logEventTableContainer {
@@ -263,14 +244,6 @@ tbody tr:nth-child(even) {
   padding: var(--spacing-sm);
   border-radius: var(--radius-sm);
   background: var(--color-bg);
-  color: var(--color-hover);
-}
-
-/* Table styling inside modals */
-#logEventTable th,
-#logEventTable td {
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--color-border);
   color: var(--color-hover);
 }
 
@@ -290,30 +263,79 @@ tbody tr:nth-child(even) {
   cursor: pointer;
   transition: background 0.3s ease;
   user-select: none;
-  font-size: 1rem;
 }
 .admin-actions button:hover,
 .admin-actions button:focus {
   background: var(--color-primary);
-  outline: none;
 }
 
-/* ===== Scrollable Boxes ===== */
-#logEventHistory,
-#employeeListToRemove {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: var(--spacing-sm);
-  color: var(--color-hover);
+/* ===== Table container scroll ===== */
+.employeeTable-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* ===== Responsive Design ===== */
+.employeeTable {
+  width: 100%;
+  min-width: auto;
+  border-collapse: collapse;
+}
+
+/* ===== Buttons base style ===== */
+button {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(64, 145, 108, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+button:hover,
+button:focus {
+  background: var(--color-hover);
+  box-shadow: 0 5px 12px rgba(27, 67, 50, 0.7);
+}
+button:disabled {
+  background: var(--color-border);
+  cursor: not-allowed;
+  box-shadow: none;
+  color: var(--color-muted);
+}
+/* ========== Responsive Design ========== */
+@media (max-width: 800px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: var(--spacing-md);
+  }
+  .employeeTable {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 700px) {
+  .sidebar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+}
 @media (max-width: 600px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
   header {
     flex-direction: column;
     align-items: flex-start;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs);
   }
   header .logo img {
     height: 40px;
@@ -327,6 +349,7 @@ tbody tr:nth-child(even) {
   .sidebar {
     flex-direction: column;
     align-items: center;
+    padding: var(--spacing-md);
   }
   .sidebar a {
     padding: var(--spacing-xs) var(--spacing-sm);
@@ -334,13 +357,13 @@ tbody tr:nth-child(even) {
   }
   .summary-card {
     padding: var(--spacing-sm);
-    font-size: 0.95rem;
   }
   th, td {
-    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
   }
   .modal-content {
     padding: var(--spacing-sm);
+    max-width: 90vw;
   }
   .close {
     font-size: 1.2rem;
@@ -348,61 +371,9 @@ tbody tr:nth-child(even) {
   #logEventHistory,
   #employeeListToRemove {
     max-height: 150px;
-    overflow-y: auto;
   }
-}
-@media (max-width: 600px) {
-  html, body {
-    width: 100%;
-    overflow-x: hidden;
+  #paginationControls {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
   }
-}
-
-/* ===== Table container scroll for small screens ===== */
-.employeeTable-container {
-  width: 85%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-}
-
-/* Employee table styling */
-.employeeTable {
-  width: 100%;
-  min-width: 600px; /* ensures horizontal scroll if needed */
-  border-collapse: collapse;
-}
-
-/* Responsive adjustments */
-@media (max-width: 800px) {
-  .employeeTable {
-    min-width: 100%; /* allow shrinking on smaller screens */
-  }
-}
-
-/* ===== Buttons base style for all buttons outside admin-actions (like search buttons) ===== */
-button {
-  background: var(--color-accent);
-  color: var(--color-surface);
-  border: none;
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(64, 145, 108, 0.4);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  font-size: 1rem;
-}
-button:hover,
-button:focus {
-  background: var(--color-hover);
-  box-shadow: 0 5px 12px rgba(27, 67, 50, 0.7);
-  outline: none;
-  color: var(--color-surface);
-}
-button:disabled {
-  background: var(--color-border);
-  cursor: not-allowed;
-  box-shadow: none;
-  color: var(--color-muted);
 }

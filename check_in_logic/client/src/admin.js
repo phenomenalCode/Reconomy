@@ -70,9 +70,9 @@ async function renderPaginationControls(totalPages, currentPage) {
     <td>${emp.end_date || '-'}</td>
     <td>—</td>
     <td>
-      <button class="updateButton">Update</button>
-      <button class="historyButton">Logged Events</button>
-      <button class="deleteButton" style="background-color: red;">Delete</button>
+       <button class="updateButton" aria-label="Update employee ${emp.first_name} ${emp.last_name}">Update</button>
+    <button class="historyButton" aria-label="View logged events for ${emp.first_name} ${emp.last_name}">Logged Events</button>
+    <button class="deleteButton" style="background-color: red;" aria-label="Delete employee ${emp.first_name} ${emp.last_name}">Delete</button>
     </td>
   `;
 
@@ -279,20 +279,39 @@ function renderEvents(events, employeeId) {
       const wrapper = document.createElement("div");
       wrapper.style.marginBottom = "15px";
       wrapper.innerHTML = `
-        <strong>Event #${index + 1}</strong><br>
-        <label>Type:
-          <select data-event-id="${e.id || ''}" class="log-type">
-            <option value="1" ${e.event_type === 1 ? "selected" : ""}>Check-in</option>
-            <option value="0" ${e.event_type === 0 ? "selected" : ""}>Check-out</option>
-          </select>
-        </label><br>
-        <label>Time:
-          <input type="datetime-local" data-event-id="${e.id || ''}" class="log-time" value="${new Date(e.date_time).toISOString().slice(0, 16)}">
-        </label><br>
-        <label>Comment:
-          <input type="text" data-event-id="${e.id || ''}" class="log-comment" value="${e.comment || ''}">
-        </label>
-        <hr>
+  <fieldset style="margin-bottom: 1rem;">
+    <legend><strong>Event #${index + 1}</strong></legend>
+
+    <div>
+      <label for="type-${e.id}">Type:</label>
+      <select id="type-${e.id}" data-event-id="${e.id || ''}" class="log-type">
+        <option value="1" ${e.event_type === 1 ? "selected" : ""}>Check-in</option>
+        <option value="0" ${e.event_type === 0 ? "selected" : ""}>Check-out</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="time-${e.id}">Time:</label>
+      <input
+        type="datetime-local"
+        id="time-${e.id}"
+        data-event-id="${e.id || ''}"
+        class="log-time"
+        value="${new Date(e.date_time).toISOString().slice(0, 16)}"
+      />
+    </div>
+
+    <div>
+      <label for="comment-${e.id}">Comment:</label>
+      <input
+        type="text"
+        id="comment-${e.id}"
+        data-event-id="${e.id || ''}"
+        class="log-comment"
+        value="${e.comment || ''}"
+      />
+    </div>
+  </fieldset>
       `;
       container.appendChild(wrapper);
     });
