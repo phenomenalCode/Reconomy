@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="css/admin.css" />
 </head>
@@ -25,14 +25,15 @@
       </div>
     </nav>
 
-    <main class="main-content" role="main">
+    <main role="main" class="main-content">
       <section class="search-section" aria-labelledby="searchSectionHeading">
         <h2 id="searchSectionHeading" class="visually-hidden">Search Employee Records</h2>
+
         <label for="searchName">Name</label>
-        <input id="searchName" name="searchName" placeholder="Name" type="text" />
+        <input id="searchName" name="searchName" type="text" placeholder="Name" />
 
         <label for="searchID">Employee ID</label>
-        <input id="searchID" name="searchID" placeholder="Employee ID" type="text" />
+        <input id="searchID" name="searchID" type="text" placeholder="Employee ID" />
 
         <label for="searchStartDate">Start Date</label>
         <input id="searchStartDate" name="searchStartDate" type="date" />
@@ -51,7 +52,7 @@
       <section aria-labelledby="employeeListHeading">
         <h2 id="employeeListHeading">Employee List &amp; Status</h2>
         <div class="employeeTable-container" role="region" aria-label="Employee Table">
-          <table id="employeeTable" border="1" cellspacing="0" cellpadding="5">
+          <table id="employeeTable" cellspacing="0" cellpadding="5" border="1">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -108,7 +109,7 @@
       <!-- Modals -->
       <div id="addEmployeeModal" class="modal" role="dialog" aria-labelledby="addEmployeeHeading" hidden>
         <div class="modal-content">
-          <span class="close" role="button" aria-label="Close Add Employee Modal" tabindex="0">&times;</span>
+          <button class="close" aria-label="Close Add Employee Modal">&times;</button>
           <h2 id="addEmployeeHeading">Add Employee</h2>
           <label for="addNamnInput">Name:</label>
           <input type="text" id="addNamnInput" placeholder="First Last" />
@@ -118,7 +119,7 @@
 
       <div id="removeEmployeeModal" class="modal" role="dialog" aria-labelledby="removeEmployeeHeading" hidden>
         <div class="modal-content">
-          <span class="close" role="button" aria-label="Close Remove Employee Modal" tabindex="0">&times;</span>
+          <button class="close" aria-label="Close Remove Employee Modal">&times;</button>
           <h2 id="removeEmployeeHeading">Remove Employee</h2>
           <ul id="employeeListToRemove"></ul>
           <button id="removeEmployeeButton">Remove Selected</button>
@@ -127,7 +128,7 @@
 
       <div id="updateEmployeeModal" class="modal" role="dialog" aria-labelledby="updateEmployeeHeading" hidden>
         <div class="modal-content">
-          <span class="close" role="button" aria-label="Close Update Employee Modal" tabindex="0">&times;</span>
+          <button class="close" aria-label="Close Update Employee Modal">&times;</button>
           <h2 id="updateEmployeeHeading">Update Employee</h2>
           <label for="updateNamnInput">Name:</label>
           <input type="text" id="updateNamnInput" placeholder="First Last" />
@@ -143,7 +144,7 @@
 
       <div id="logHistoryModal" class="modal" role="dialog" aria-labelledby="logEventHistory" hidden>
         <div class="modal-content">
-          <span class="close" role="button" aria-label="Close Log History Modal" tabindex="0">&times;</span>
+          <button class="close" aria-label="Close Log History Modal">&times;</button>
           <h2 id="logEventHistory">Log History</h2>
           <div id="logEventsContainer" style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:10px;">
             <em>Select a "Logged Events" button to view event history</em>
@@ -166,9 +167,9 @@
   <script type="module" src="src/search.js"></script>
   <script type="module" src="src/calc.js"></script>
   <script type="module" src="src/edit-work-period.js"></script>
-</body>
 
-<footer role="contentinfo">
-  <p>&copy; 2023 Reconomy. All rights reserved. Created by Darius Carter.</p>
-</footer>
+  <footer role="contentinfo">
+    <p>&copy; 2023 Reconomy. All rights reserved. Created by Darius Carter.</p>
+  </footer>
+</body>
 </html>
