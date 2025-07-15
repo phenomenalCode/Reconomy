@@ -342,18 +342,6 @@ tbody tr:nth-child(even) {
   color: var(--color-hover);
 }
 
-#employeeListHeading {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1.2;
-}
-
-section[aria-labelledby="employeeListHeading"] {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: visible !important;
-  border-top: 1px solid transparent; /* fix margin collapse */
-}
 
 
 

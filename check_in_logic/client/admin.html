@@ -6,11 +6,12 @@
   <title>Admin Dashboard</title>
   <meta name="description" content="Admin dashboard for managing employee records at Reconomy." />
   <link rel="stylesheet" href="css/admin.css" />
-
+  
   <!-- Preload fonts if used -->
   <!--
   <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   -->
+
   <style>
     /* Modals visibility */
     .modal[aria-hidden="false"] {
@@ -38,7 +39,7 @@
     }
 
     /* Fix the section causing CLS (likely search-section or employee list) */
-    .search-section
+    .search-section, 
     #paginationSection, 
     [aria-label="Employee Table"] {
       min-height: 200px; /* or a height that matches typical content */
@@ -99,9 +100,11 @@
           <button id="clearSearch" type="button">Clear</button>
         </div>
       </section>
+
       <section id="paginationSection" aria-label="Pagination Controls">
         <div id="paginationControls"></div>
       </section>
+
       <section aria-labelledby="employeeListHeading">
         <h2 id="employeeListHeading">Employee List &amp; Status</h2>
         <div class="employeeTable-container" role="region" aria-label="Employee Table">
