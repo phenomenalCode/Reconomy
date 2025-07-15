@@ -144,12 +144,13 @@ header .logo img {
   justify-content: start;
   box-shadow: 0 4px 8px rgba(64, 145, 108, 0.15);
 }
-
-.search-field {
+.search-field,
+.search-buttons {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: flex-end;
 }
+
 
 .search-section label {
   font-weight: 600;
@@ -183,13 +184,16 @@ header .logo img {
   background: var(--color-bg);
 }
 
-/* Search buttons container */
 .search-buttons {
   display: flex;
+  flex-direction: row;
   gap: var(--spacing-md);
-  align-items: flex-end;
-  justify-content: start;
+  align-items: flex-end;           /* Align buttons vertically with input fields */
+  justify-content: flex-start;     /* Align buttons to the left */
+  height: 100%;                    /* Ensure it stretches like the other fields */
+  padding-top: 1.75rem;            /* Optional: aligns with inputs that have label spacing */
 }
+
 
 .search-section button {
   background: var(--color-primary);
