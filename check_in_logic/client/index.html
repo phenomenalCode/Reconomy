@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Check-In Page</title>
-     <meta name="description" content="Check-in page for participants to log attendance quickly and securely at Reconomy." />
+  <meta name="description" content="Check-in page for participants to log attendance quickly and securely at Reconomy." />
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/index.css" />
   <link
@@ -27,12 +27,12 @@
   </style>
 </head>
 <body>
-  <div class="header">
+  <header class="header" role="banner">
     <div class="logo">
       <img src="media/images/reconomy-logo.png" alt="Company Logo" />
     </div>
 
-    <div id="admin_login" class="admin-login">
+    <section id="admin_login" class="admin-login" aria-label="Admin login">
       <form id="admin_login_form" autocomplete="on" novalidate>
         <label for="input_username" class="visually-hidden">Username</label>
         <input
@@ -60,69 +60,75 @@
 
         <button id="btn_admin_submit" type="submit">Login</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </header>
 
-  <div class="container">
+  <main class="container" role="main">
     <h1>Deltagare Incheckning</h1>
 
-    <div class="check-in">
+    <section class="check-in" aria-label="Participant check-in">
       <form id="check_in_form" action="/checkin" method="POST">
-        <div id="div_id_number">
-          <label id="id_number_label" for="id_number">ID nummer:</label>
-          <input class="gray-input" type="text" id="id_number" name="id_number" />
+        <fieldset>
+          <legend>ID nummer</legend>
+          <label for="id_number">ID nummer:</label>
+          <input class="gray-input" type="text" id="id_number" name="id_number" autocomplete="off" />
           <button id="btn_find" type="button">Find</button>
-        </div>
-        <br />
-        <label id="alphabet_label" for="alphabet_table">Välj efternamns forsta bokstav:</label>
-        <div id="alphabet_container">
-          <table id="alphabet_table">
-            <tr>
-              <td><a class="alphabet" href="#" data-letter="a">a</a></td>
-              <td><a class="alphabet" href="#" data-letter="b">b</a></td>
-              <td><a class="alphabet" href="#" data-letter="c">c</a></td>
-              <td><a class="alphabet" href="#" data-letter="d">d</a></td>
-              <td><a class="alphabet" href="#" data-letter="e">e</a></td>
-              <td><a class="alphabet" href="#" data-letter="f">f</a></td>
-              <td><a class="alphabet" href="#" data-letter="g">g</a></td>
-              <td><a class="alphabet" href="#" data-letter="h">h</a></td>
-              <td><a class="alphabet" href="#" data-letter="i">i</a></td>
-              <td><a class="alphabet" href="#" data-letter="j">j</a></td>
-              <td><a class="alphabet" href="#" data-letter="k">k</a></td>
-              <td><a class="alphabet" href="#" data-letter="l">l</a></td>
-              <td><a class="alphabet" href="#" data-letter="m">m</a></td>
-              <td><a class="alphabet" href="#" data-letter="n">n</a></td>
-              <td><a class="alphabet" href="#" data-letter="o">o</a></td>
-              <td><a class="alphabet" href="#" data-letter="p">p</a></td>
-              <td><a class="alphabet" href="#" data-letter="q">q</a></td>
-              <td><a class="alphabet" href="#" data-letter="r">r</a></td>
-              <td><a class="alphabet" href="#" data-letter="s">s</a></td>
-              <td><a class="alphabet" href="#" data-letter="t">t</a></td>
-              <td><a class="alphabet" href="#" data-letter="u">u</a></td>
-              <td><a class="alphabet" href="#" data-letter="v">v</a></td>
-              <td><a class="alphabet" href="#" data-letter="w">w</a></td>
-              <td><a class="alphabet" href="#" data-letter="x">x</a></td>
-              <td><a class="alphabet" href="#" data-letter="y">y</a></td>
-              <td><a class="alphabet" href="#" data-letter="z">z</a></td>
-            </tr>
-          </table>
-        </div>
-        <br /><br />
-        <div id="employee_select_container">
-          <label for="participant">Välj ditt namn:</label>
-          <select id="participant" name="participant_name" required></select>
-        </div>
-        <br /><br />
+        </fieldset>
 
-        <div class="status-option">
+        <fieldset>
+          <legend>Välj efternamns första bokstav</legend>
+          <label id="alphabet_label" for="alphabet_table" class="visually-hidden">Välj efternamns första bokstav:</label>
+          <div id="alphabet_container" role="navigation" aria-label="Alphabetical filter">
+            <table id="alphabet_table" role="grid" aria-readonly="true" aria-label="Alphabet navigation">
+              <tr>
+                <td><a class="alphabet" href="#" data-letter="a" aria-label="Letter A">a</a></td>
+                <td><a class="alphabet" href="#" data-letter="b" aria-label="Letter B">b</a></td>
+                <td><a class="alphabet" href="#" data-letter="c" aria-label="Letter C">c</a></td>
+                <td><a class="alphabet" href="#" data-letter="d" aria-label="Letter D">d</a></td>
+                <td><a class="alphabet" href="#" data-letter="e" aria-label="Letter E">e</a></td>
+                <td><a class="alphabet" href="#" data-letter="f" aria-label="Letter F">f</a></td>
+                <td><a class="alphabet" href="#" data-letter="g" aria-label="Letter G">g</a></td>
+                <td><a class="alphabet" href="#" data-letter="h" aria-label="Letter H">h</a></td>
+                <td><a class="alphabet" href="#" data-letter="i" aria-label="Letter I">i</a></td>
+                <td><a class="alphabet" href="#" data-letter="j" aria-label="Letter J">j</a></td>
+                <td><a class="alphabet" href="#" data-letter="k" aria-label="Letter K">k</a></td>
+                <td><a class="alphabet" href="#" data-letter="l" aria-label="Letter L">l</a></td>
+                <td><a class="alphabet" href="#" data-letter="m" aria-label="Letter M">m</a></td>
+                <td><a class="alphabet" href="#" data-letter="n" aria-label="Letter N">n</a></td>
+                <td><a class="alphabet" href="#" data-letter="o" aria-label="Letter O">o</a></td>
+                <td><a class="alphabet" href="#" data-letter="p" aria-label="Letter P">p</a></td>
+                <td><a class="alphabet" href="#" data-letter="q" aria-label="Letter Q">q</a></td>
+                <td><a class="alphabet" href="#" data-letter="r" aria-label="Letter R">r</a></td>
+                <td><a class="alphabet" href="#" data-letter="s" aria-label="Letter S">s</a></td>
+                <td><a class="alphabet" href="#" data-letter="t" aria-label="Letter T">t</a></td>
+                <td><a class="alphabet" href="#" data-letter="u" aria-label="Letter U">u</a></td>
+                <td><a class="alphabet" href="#" data-letter="v" aria-label="Letter V">v</a></td>
+                <td><a class="alphabet" href="#" data-letter="w" aria-label="Letter W">w</a></td>
+                <td><a class="alphabet" href="#" data-letter="x" aria-label="Letter X">x</a></td>
+                <td><a class="alphabet" href="#" data-letter="y" aria-label="Letter Y">y</a></td>
+                <td><a class="alphabet" href="#" data-letter="z" aria-label="Letter Z">z</a></td>
+              </tr>
+            </table>
+          </div>
+        </fieldset>
+
+        <fieldset id="employee_select_container">
+       
+          <label for="participant">Välj ditt namn:</label>
+          <select id="participant" name="participant_name" required aria-required="true"></select>
+        </fieldset>
+
+        <fieldset class="status-option" aria-label="Log event type">
+          <legend>Log event type</legend>
           <label id="log_event_in_container">
             <input
               id="log_event_in"
               type="radio"
               name="log_event_type"
               value="kom"
+              required
             />
-            Kom <i class="fas fa-walking"></i>
+            Kom <i class="fas fa-walking" aria-hidden="true"></i>
           </label>
           <label id="log_event_out_container">
             <input
@@ -131,12 +137,12 @@
               name="log_event_type"
               value="gick"
             />
-            Gick <i class="fas fa-running"></i>
+            Gick <i class="fas fa-running" aria-hidden="true"></i>
           </label>
-        </div>
-        <br />
+        </fieldset>
 
-        <div id="comment_container">
+        <fieldset id="comment_container">
+          <legend>Comments</legend>
           <label id="lbl_log_event_comment" for="log_event_comment">Comments:</label>
           <input
             class="gray-input"
@@ -144,20 +150,20 @@
             id="log_event_comment"
             name="log_event_comment"
             placeholder="Note late arrival or early departure"
+            autocomplete="off"
           />
-        </div>
-        <br />
+        </fieldset>
 
         <button type="submit">Check In</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <div id="success_popup" class="popup-overlay">
+  <div id="success_popup" class="popup-overlay" role="alertdialog" aria-modal="true" aria-labelledby="success_label">
     <div class="popup-content">
       <h2>Success!</h2>
       <p id="success_label">Du har checkat </p>
-      <button id="close_popup">OK</button>
+      <button id="close_popup" aria-label="Close success popup">OK</button>
     </div>
   </div>
 

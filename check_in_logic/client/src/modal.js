@@ -2,12 +2,16 @@
 
 export const openModal = (id) => {
   const modal = document.getElementById(id);
-  if (modal) modal.style.display = "flex"; // use "flex" for centered modals
+  if (modal) {
+    modal.setAttribute('aria-hidden', 'false');
+  }
 };
 
 export const closeModal = (id) => {
   const modal = document.getElementById(id);
-  if (modal) modal.style.display = "none";
+  if (modal) {
+    modal.setAttribute('aria-hidden', 'true');
+  }
 };
 
 export function initModalHandlers() {

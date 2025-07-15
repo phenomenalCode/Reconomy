@@ -119,7 +119,7 @@ async function getEmployeeById(empId) {
 }
 
 function loadEmployeesDropdown(list, showOptions) {
-  // ✅ Guard: handle non-array results
+  
   if (!Array.isArray(list)) {
     console.error("Expected an array but got:", list);
     alert("Unexpected response from server.");
