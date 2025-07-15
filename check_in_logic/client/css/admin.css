@@ -127,7 +127,7 @@ header .logo img {
 
 /* ===== Main Content ===== */
 .main-content {
-  padding: var(--spacing-lg);
+  padding-top: 0 !important;
   background: var(--color-surface);
 }
 
@@ -140,15 +140,29 @@ header .logo img {
   padding: var(--spacing-lg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);  /* ← SEMICOLON FIXED */
   justify-content: start;
   box-shadow: 0 4px 8px rgba(64, 145, 108, 0.15);
 }
 
+
 .search-field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  min-height: 3.5rem; /* reserve vertical space */
+  box-sizing: border-box;
+  margin-bottom: 1rem; /* optional spacing */
+}
+
+.search-field label {
+  display: inline-block;
+  width: 110px;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.search-field input {
+  width: calc(100% - 110px);
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif; /* fallback fonts */
 }
 
 .search-section label {
@@ -217,9 +231,14 @@ header .logo img {
 #paginationControls {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md); /* reduced from --spacing-lg */
 }
+
+
 
 #paginationControls button {
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -322,6 +341,21 @@ tbody tr:nth-child(even) {
 .close:focus {
   color: var(--color-hover);
 }
+
+#employeeListHeading {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2;
+}
+
+section[aria-labelledby="employeeListHeading"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border-top: 1px solid transparent; /* fix margin collapse */
+}
+
+
 
 /* ===== Scrollable Boxes ===== */
 #logEventsContainer,
