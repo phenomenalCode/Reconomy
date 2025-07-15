@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard</title>
+  <meta name="description" content="Admin dashboard for managing employee records at Reconomy." />
   <link rel="stylesheet" href="css/admin.css" />
   <style>
     .modal[aria-hidden="false"] {
@@ -230,7 +231,6 @@
           <h2 id="logEventHistory">Log History</h2>
           <div
             id="logEventsContainer"
-            style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px"
           >
             <em>Select a "Logged Events" button to view event history</em>
           </div>
@@ -246,7 +246,7 @@
   </div>
 
   <!-- JavaScript Modules -->
-  <script type="module" src="src/admin.js"></script>
+  <script rel="preload" type="module" src="src/admin.js"></script>
   <script type="module" src="src/config.js"></script>
   <script type="module" src="src/logout.js"></script>
   <script type="module" src="src/search.js"></script>
