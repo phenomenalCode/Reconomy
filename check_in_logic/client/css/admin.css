@@ -39,13 +39,13 @@ header {
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
   background: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-header .logo img {
-  height: 48px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 header .logo {
   flex: 1;
+}
+header .logo img {
+  height: 48px;
 }
 
 /* ===== Layout ===== */
@@ -78,7 +78,7 @@ header .logo {
 }
 .sidebar a:hover,
 .sidebar a:focus {
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 /* ===== Main Content ===== */
@@ -103,12 +103,12 @@ header .logo {
   padding: var(--spacing-sm);
   border: 1px solid var(--color-accent);
   border-radius: var(--radius-sm);
-  transition: border-color 0.2s, box-shadow 0.2s;
   font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .search-section input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(64,145,108,0.3);
+  box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.3);
 }
 .search-section button {
   background: var(--color-primary);
@@ -166,7 +166,7 @@ table {
   margin-bottom: var(--spacing-lg);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 th, td {
   padding: var(--spacing-sm);
@@ -189,7 +189,7 @@ tbody tr:nth-child(even) {
   border-radius: var(--radius-md);
   padding: var(--spacing-md);
   margin: var(--spacing-lg) 0;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
   color: var(--color-hover);
 }
 
@@ -198,7 +198,7 @@ tbody tr:nth-child(even) {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 2000;
   align-items: center;
   justify-content: center;
@@ -212,7 +212,7 @@ tbody tr:nth-child(even) {
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   position: relative;
   color: var(--color-hover);
   font-size: 1rem;
@@ -275,7 +275,6 @@ tbody tr:nth-child(even) {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 .employeeTable {
   width: 100%;
   min-width: auto;
@@ -306,7 +305,8 @@ button:disabled {
   box-shadow: none;
   color: var(--color-muted);
 }
-/* ========== Responsive Design ========== */
+
+/* ===== Responsive Design ===== */
 @media (max-width: 800px) {
   .admin-container {
     grid-template-columns: 1fr;
