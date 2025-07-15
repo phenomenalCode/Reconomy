@@ -26,24 +26,35 @@
     </nav>
 
     <main role="main" class="main-content">
-      <section class="search-section" aria-labelledby="searchSectionHeading">
-        <h2 id="searchSectionHeading" class="visually-hidden">Search Employee Records</h2>
+   <section class="search-section" aria-labelledby="searchSectionHeading">
+  <h2 id="searchSectionHeading" class="visually-hidden">Search Employee Records</h2>
 
-        <label for="searchName">Name</label>
-        <input id="searchName" name="searchName" type="text" placeholder="Name" />
+  <div class="search-field">
+    <label for="searchName">Name</label>
+    <input id="searchName" name="searchName" type="text" placeholder="Name" />
+  </div>
 
-        <label for="searchID">Employee ID</label>
-        <input id="searchID" name="searchID" type="text" placeholder="Employee ID" />
+  <div class="search-field">
+    <label for="searchID">Employee ID</label>
+    <input id="searchID" name="searchID" type="text" placeholder="Employee ID" />
+  </div>
 
-        <label for="searchStartDate">Start Date</label>
-        <input id="searchStartDate" name="searchStartDate" type="date" />
+  <div class="search-field">
+    <label for="searchStartDate">Start Date</label>
+    <input id="searchStartDate" name="searchStartDate" type="date" />
+  </div>
 
-        <label for="searchEndDate">End Date</label>
-        <input id="searchEndDate" name="searchEndDate" type="date" />
+  <div class="search-field">
+    <label for="searchEndDate">End Date</label>
+    <input id="searchEndDate" name="searchEndDate" type="date" />
+  </div>
 
-        <button id="searchButton">Search</button>
-        <button id="clearSearch">Clear</button>
-      </section>
+  <div class="search-buttons">
+    <button id="searchButton">Search</button>
+    <button id="clearSearch">Clear</button>
+  </div>
+</section>
+
 
       <section id="paginationSection" aria-label="Pagination Controls">
         <div id="paginationControls"></div>
