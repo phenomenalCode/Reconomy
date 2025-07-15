@@ -15,7 +15,7 @@ export const closeModal = (id) => {
 };
 
 export function initModalHandlers() {
-  // Automatically wire up all close buttons
+  // Close modal when clicking on elements with class "close"
   document.querySelectorAll('.modal .close').forEach(btn => {
     btn.addEventListener('click', () => {
       const modal = btn.closest('.modal');
@@ -23,36 +23,38 @@ export function initModalHandlers() {
     });
   });
 
-  // Optional: background click closes modal
+  // Close modal on background click
   document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.style.display = "none";
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal && modal.id) {
+        closeModal(modal.id);
+      }
     });
   });
 
-  // Optional: ESC key closes all modals
-  document.addEventListener('keydown', e => {
+  // Close any open modals on ESC key
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.modal[aria-hidden="false"]').forEach(modal => {
+        modal.setAttribute('aria-hidden', 'true');
+      });
     }
   });
 }
 
-// Optional: for updating employee
+// Opens the update modal with pre-filled employee data
 export function openUpdateModal(emp) {
-  console.log("Opening update modal with employee:", emp);
-
-  const startInput = document.getElementById('updateStartDateInput');
-  const endInput = document.getElementById('updateEndDateInput');
-  const saveBtn = document.getElementById('updateEmployeeSaveButton');
-
   if (!emp || !emp.employee_id) {
     console.error("Invalid employee data:", emp);
     return;
   }
 
+  const startInput = document.getElementById('updateStartDateInput');
+  const endInput = document.getElementById('updateEndDateInput');
+  const saveBtn = document.getElementById('updateEmployeeSaveButton');
+
   if (!startInput || !endInput || !saveBtn) {
-    console.error("One or more update modal elements are missing.");
+    console.error("Missing modal input(s).");
     return;
   }
 

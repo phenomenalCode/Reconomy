@@ -9,8 +9,7 @@
 <body>
   <header role="banner">
     <div class="logo">
-     <img src="media/images/reconomy-logo.png" alt="Reconomy company logo" width="200" height="60" loading="eager" />
-
+      <img src="media/images/reconomy-logo.png" alt="Reconomy company logo" width="200" height="60" loading="eager" />
     </div>
   </header>
 
@@ -27,35 +26,34 @@
     </nav>
 
     <main role="main" class="main-content">
-   <section class="search-section" aria-labelledby="searchSectionHeading">
-  <h2 id="searchSectionHeading" class="visually-hidden">Search Employee Records</h2>
+      <section class="search-section" aria-labelledby="searchSectionHeading">
+        <h2 id="searchSectionHeading" class="visually-hidden">Search Employee Records</h2>
 
-  <div class="search-field">
-    <label for="searchName">Name</label>
-    <input id="searchName" name="searchName" type="text" placeholder="Name" />
-  </div>
+        <div class="search-field">
+          <label for="searchName">Name</label>
+          <input id="searchName" name="searchName" type="text" placeholder="Name" />
+        </div>
 
-  <div class="search-field">
-    <label for="searchID">Employee ID</label>
-    <input id="searchID" name="searchID" type="text" placeholder="Employee ID" />
-  </div>
+        <div class="search-field">
+          <label for="searchID">Employee ID</label>
+          <input id="searchID" name="searchID" type="text" placeholder="Employee ID" />
+        </div>
 
-  <div class="search-field">
-    <label for="searchStartDate">Start Date</label>
-    <input id="searchStartDate" name="searchStartDate" type="date" />
-  </div>
+        <div class="search-field">
+          <label for="searchStartDate">Start Date</label>
+          <input id="searchStartDate" name="searchStartDate" type="date" />
+        </div>
 
-  <div class="search-field">
-    <label for="searchEndDate">End Date</label>
-    <input id="searchEndDate" name="searchEndDate" type="date" />
-  </div>
+        <div class="search-field">
+          <label for="searchEndDate">End Date</label>
+          <input id="searchEndDate" name="searchEndDate" type="date" />
+        </div>
 
-  <div class="search-buttons">
-    <button id="searchButton">Search</button>
-    <button id="clearSearch">Clear</button>
-  </div>
-</section>
-
+        <div class="search-buttons">
+          <button id="searchButton">Search</button>
+          <button id="clearSearch">Clear</button>
+        </div>
+      </section>
 
       <section id="paginationSection" aria-label="Pagination Controls">
         <div id="paginationControls"></div>
@@ -119,7 +117,7 @@
       </section>
 
       <!-- Modals -->
-      <div id="addEmployeeModal" class="modal" role="dialog" aria-labelledby="addEmployeeHeading" hidden>
+      <div id="addEmployeeModal" class="modal" role="dialog" aria-labelledby="addEmployeeHeading" aria-hidden="true">
         <div class="modal-content">
           <button class="close" aria-label="Close Add Employee Modal">&times;</button>
           <h2 id="addEmployeeHeading">Add Employee</h2>
@@ -129,7 +127,7 @@
         </div>
       </div>
 
-      <div id="removeEmployeeModal" class="modal" role="dialog" aria-labelledby="removeEmployeeHeading" hidden>
+      <div id="removeEmployeeModal" class="modal" role="dialog" aria-labelledby="removeEmployeeHeading" aria-hidden="true">
         <div class="modal-content">
           <button class="close" aria-label="Close Remove Employee Modal">&times;</button>
           <h2 id="removeEmployeeHeading">Remove Employee</h2>
@@ -138,7 +136,7 @@
         </div>
       </div>
 
-      <div id="updateEmployeeModal" class="modal" role="dialog" aria-labelledby="updateEmployeeHeading" hidden>
+      <div id="updateEmployeeModal" class="modal" role="dialog" aria-labelledby="updateEmployeeHeading" aria-hidden="true">
         <div class="modal-content">
           <button class="close" aria-label="Close Update Employee Modal">&times;</button>
           <h2 id="updateEmployeeHeading">Update Employee</h2>
@@ -154,7 +152,7 @@
         </div>
       </div>
 
-      <div id="logHistoryModal" class="modal" role="dialog" aria-labelledby="logEventHistory" hidden>
+      <div id="logHistoryModal" class="modal" role="dialog" aria-labelledby="logEventHistory" aria-hidden="true">
         <div class="modal-content">
           <button class="close" aria-label="Close Log History Modal">&times;</button>
           <h2 id="logEventHistory">Log History</h2>
