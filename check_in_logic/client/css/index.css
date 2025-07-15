@@ -1,18 +1,19 @@
-/* Body and Background */
+/* ---------- Body & Background ---------- */
 body {
   min-height: 100vh; /* prevent height jumps */
+  margin: 0; /* prevent body margin issues */
+  font-family: Arial, sans-serif;
+  color: #222; /* better default text contrast */
   background-color: #fdf6ec; /* fallback color */
   background-image: url('../media/images/scandinavian-office-interior-with-plant-3d-free-photo.webp');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  margin: 0; /* prevent body margin issues */
-  font-family: Arial, sans-serif;
-  color: #222; /* better default text contrast */
+  box-sizing: border-box;
 }
 
-/* Header */
+/* ---------- Header & Logo ---------- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,18 +21,16 @@ body {
   padding: 12px 20px;
   background-color: #fff;
   border-bottom: 1px solid #bbb;
-  box-sizing: border-box;
   width: 100%;
 }
 
-/* Logo */
 .logo img {
   max-height: 60px;
   max-width: 100%;
   height: auto;
 }
 
-/* Admin Login */
+/* ---------- Admin Login ---------- */
 .admin-login {
   display: flex;
   align-items: center;
@@ -47,12 +46,12 @@ body {
 .admin-login input[type="password"] {
   background-color: #dcdcdc !important;
   padding: 8px 10px;
-  border: 1px solid #888; /* stronger contrast */
+  border: 1px solid #888;
   border-radius: 4px;
   font-size: 1rem;
   min-width: 140px;
-  box-sizing: border-box;
   color: #111;
+  box-sizing: border-box;
 }
 
 .admin-login input[type="text"]:focus,
@@ -65,7 +64,7 @@ body {
 
 .admin-login button {
   padding: 12px 20px;
-  background-color: #218838; /* darker green for contrast */
+  background-color: #218838;
   color: white;
   border: none;
   border-radius: 6px;
@@ -83,27 +82,25 @@ body {
   box-shadow: 0 0 0 3px #a5d6a7;
 }
 
-/* Main Container */
-/* Main Container */
+/* ---------- Main Container ---------- */
 .container {
   background-color: #fff;
   padding: 30px 25px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.12);
-  max-width: 800px;     /* increased from 600px */
-  min-width: 320px;     /* prevent shrinking too small */
+  max-width: 800px;
+  min-width: 320px;
   width: 100%;
   margin: 40px auto 0;
-  box-sizing: border-box;
   text-align: center;
   flex: 1;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
+  box-sizing: border-box;
 }
 
-
-/* Check-in Form */
+/* ---------- Check-in Form ---------- */
 .check-in form {
   margin-top: 25px;
 }
@@ -115,8 +112,8 @@ body {
   border: 1px solid #888;
   border-radius: 6px;
   font-size: 1rem;
-  box-sizing: border-box;
   color: #111;
+  box-sizing: border-box;
 }
 
 .check-in input[type="text"]:focus {
@@ -146,7 +143,7 @@ body {
   box-shadow: 0 0 0 3px #a5d6a7;
 }
 
-/* Event Containers */
+/* ---------- Event Containers ---------- */
 #log_event_in_container {
   margin-right: 20px;
 }
@@ -155,7 +152,7 @@ body {
   margin-left: 20px;
 }
 
-/* Comment Container */
+/* ---------- Comment Container ---------- */
 #comment_container {
   margin-top: 15px;
   margin-left: 15px;
@@ -177,8 +174,8 @@ body {
   border-radius: 4px;
   font-size: 1rem;
   min-width: 150px;
-  box-sizing: border-box;
   color: #111;
+  box-sizing: border-box;
 }
 
 #comment_container input:focus {
@@ -188,12 +185,12 @@ body {
   background-color: #e9f5e9;
 }
 
-/* Font Awesome Icons */
+/* ---------- Font Awesome Icons ---------- */
 .fas {
-  color: #218838;
   font-size: 22px;
   vertical-align: middle;
   margin: 0 5px;
+  color: #218838;
 }
 
 .fas.fa-walking {
@@ -208,21 +205,21 @@ body {
   color: #7b1fa2;
 }
 
-/* Popup Overlay */
+/* ---------- Popup Overlay & Content ---------- */
 .popup-overlay {
-  display: none; /* Hidden by default */
+  display: none; /* hidden by default */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.55);
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   padding: 20px;
   box-sizing: border-box;
+  /* Note: display:flex is set dynamically via JS when showing popup */
 }
 
 .popup-content {
@@ -232,12 +229,12 @@ body {
   text-align: center;
   width: 100%;
   max-width: 420px;
-  box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  box-sizing: border-box;
 }
 
 .popup-content h2 {
@@ -254,8 +251,8 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
   min-width: 110px;
+  transition: background-color 0.3s ease;
 }
 
 .popup-content button:hover,
@@ -265,21 +262,20 @@ body {
   box-shadow: 0 0 0 3px #a5d6a7;
 }
 
-/* ID Number Section */
+/* ---------- ID Number Section ---------- */
 #div_id_number {
   padding-top: 10px;
-  height: auto;
   margin-bottom: 25px;
-  box-sizing: border-box;
-  width: 100%;
   max-width: 600px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  box-sizing: border-box;
 }
 
-/* Find Button */
+/* ---------- Find Button ---------- */
 #btn_find {
-  height: 44px; /* Accessible height */
+  height: 44px;
   min-width: 70px;
   padding: 0 15px;
   text-align: center;
@@ -300,7 +296,7 @@ body {
   box-shadow: 0 0 0 3px #a5d6a7;
 }
 
-/* ID Number Input */
+/* ---------- ID Number Input ---------- */
 #id_number {
   padding: 8px 10px;
   width: 60px;
@@ -309,8 +305,8 @@ body {
   border-radius: 6px;
   border: 1px solid #888;
   font-size: 1rem;
-  box-sizing: border-box;
   color: #111;
+  box-sizing: border-box;
 }
 
 #id_number:focus {
@@ -319,21 +315,21 @@ body {
   border-color: #218838;
   background-color: #e9f5e9;
 }
-/* Alphabet Container */
+
+/* ---------- Alphabet Container & Table ---------- */
 #alphabet_container {
   padding-top: 15px;
-  max-width: 800px;          /* max container width */
+  max-width: 800px;
   margin: 0 auto;
   box-sizing: border-box;
-  overflow-x: hidden;        /* prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-/* Make the table take full container width and distribute columns evenly */
 #alphabet_table {
   width: 100%;
-  table-layout: fixed;       /* equal width columns */
+  table-layout: fixed;
   border-collapse: separate;
-  border-spacing: 4px 6px;   /* some spacing between cells */
+  border-spacing: 4px 6px;
   margin: 0 auto;
   background-color: #dcdcdc;
   border-radius: 6px;
@@ -341,24 +337,22 @@ body {
   box-sizing: border-box;
 }
 
-/* Table cells */
 #alphabet_table td {
-  width: calc(100% / 26);    /* 26 letters */
+  width: calc(100% / 26);
   text-align: center;
   vertical-align: middle;
   padding: 0;
   border: 1px solid #28a745;
-  box-sizing: border-box;
   background-color: #dcdcdc;
   border-radius: 6px;
+  box-sizing: border-box;
 }
 
-/* Anchor tags inside cells */
 #alphabet_container a {
   display: block;
   width: 100%;
-  height: 44px;              /* meet touch target height */
-  line-height: 44px;         /* vertically center letter */
+  height: 44px;
+  line-height: 44px;
   font-size: 16px;
   color: #111;
   text-decoration: none;
@@ -368,7 +362,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover and focus styles */
 #alphabet_table td:hover,
 #alphabet_container a:hover,
 #alphabet_container a:focus {
@@ -378,6 +371,8 @@ body {
   outline: none;
   box-shadow: 0 0 0 3px #a5d6a7;
 }
+
+/* ---------- Employee Select Container ---------- */
 #employee_select_container {
   max-width: 600px;
   margin: 20px auto;
@@ -397,15 +392,14 @@ body {
 
 #employee_select_container select {
   width: 100%;
-  max-width: 100%;
   padding: 10px 12px;
   font-size: 1rem;
   border: 1.5px solid #888;
   border-radius: 6px;
   background-color: #fff;
   color: #111;
-  box-sizing: border-box;
   cursor: pointer;
+  box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -415,13 +409,12 @@ body {
   box-shadow: 0 0 0 3px #a5d6a7;
 }
 
-
-/* Log event comment */
-#log_event_commant {
+/* ---------- Log Event Comment (fix typo) ---------- */
+#log_event_comment {
   margin-top: 15px;
 }
 
-/* Utility */
+/* ---------- Utility Classes ---------- */
 .gray-input {
   background-color: #dcdcdc;
 }

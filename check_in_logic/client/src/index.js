@@ -36,8 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   employeeSelect      = document.getElementById("participant");
   alphabet            = document.getElementsByClassName("alphabet");
 
-  
-  successPopup.style.display = "none";
   /* Init employee dropdown with a default option */
   addLabelOption("employees");
 
