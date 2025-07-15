@@ -1,6 +1,8 @@
 /* ===== Root Variables ===== */
 :root {
   --font-main: 'Inter', sans-serif;
+
+  /* Colors */
   --color-bg: #fdf6ec;
   --color-surface: #ffffff;
   --color-primary: #2d6a4f;
@@ -8,8 +10,12 @@
   --color-muted: #7d8b7f;
   --color-border: #b7e4c7;
   --color-hover: #1b4332;
+
+  /* Radii */
   --radius-sm: 4px;
   --radius-md: 8px;
+
+  /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -20,6 +26,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: var(--font-main);
@@ -27,27 +34,30 @@ body {
   color: var(--color-hover);
   line-height: 1.5;
 }
+
 h1, h2, h3, h4, h5 {
   margin: var(--spacing-md) 0 var(--spacing-sm);
   color: var(--color-primary);
   font-weight: 600;
 }
 
+/* ===== Modal ===== */
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.95);
   width: 400px;
   max-width: 90vw;
   min-height: 250px;
-  background: white;
+  background: var(--color-surface);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,6 +67,7 @@ h1, h2, h3, h4, h5 {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 
@@ -68,9 +79,11 @@ header {
   background: var(--color-primary);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 header .logo {
   flex: 1;
 }
+
 header .logo img {
   height: 48px;
 }
@@ -87,14 +100,17 @@ header .logo img {
   background: var(--color-accent);
   padding: var(--spacing-lg) var(--spacing-md);
 }
+
 .sidebar ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .sidebar li + li {
   margin-top: var(--spacing-sm);
 }
+
 .sidebar a {
   display: block;
   padding: var(--spacing-sm) var(--spacing-md);
@@ -103,6 +119,7 @@ header .logo img {
   border-radius: var(--radius-sm);
   transition: background 0.2s;
 }
+
 .sidebar a:hover,
 .sidebar a:focus {
   background: rgba(0, 0, 0, 0.15);
@@ -119,7 +136,7 @@ header .logo img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: var(--spacing-md);
-  background: var(--color-bg); /* beige background */
+  background: var(--color-bg);
   padding: var(--spacing-lg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -128,7 +145,6 @@ header .logo img {
   box-shadow: 0 4px 8px rgba(64, 145, 108, 0.15);
 }
 
-/* Wrap each label + input together */
 .search-field {
   display: flex;
   flex-direction: column;
@@ -167,49 +183,34 @@ header .logo img {
   background: var(--color-bg);
 }
 
-/* Container for buttons */
+/* Search buttons container */
 .search-buttons {
   display: flex;
   gap: var(--spacing-md);
-  align-items: flex-end; /* aligns buttons bottom with inputs */
+  align-items: flex-end;
   justify-content: start;
 }
 
-/* Buttons styling */.search-section button {
+.search-section button {
   background: var(--color-primary);
   color: var(--color-surface);
   font-weight: 700;
   cursor: pointer;
   user-select: none;
-  max-width: 180px;            /* increased max width */
-  box-shadow: 0 5px 14px rgba(45, 106, 79, 0.4);  /* slightly stronger shadow */
+  max-width: 180px;
+  box-shadow: 0 5px 14px rgba(45, 106, 79, 0.4);
   border: none;
-  padding: 12px 24px;          /* bigger padding */
+  padding: 12px 24px;
   border-radius: var(--radius-md);
-  font-size: 1.1rem;           /* slightly larger font */
+  font-size: 1.1rem;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .search-section button:hover,
 .search-section button:focus {
   background: var(--color-hover);
   box-shadow: 0 6px 14px rgba(27, 67, 50, 0.7);
   outline: none;
-}
-
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  .search-section {
-    grid-template-columns: 1fr;
-  }
-  .search-buttons {
-    justify-content: stretch;
-  }
-  .search-buttons button {
-    flex: 1;
-    max-width: none;
-  }
 }
 
 /* ===== Pagination Controls ===== */
@@ -219,6 +220,7 @@ header .logo img {
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
 }
+
 #paginationControls button {
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid #388e3c;
@@ -230,11 +232,13 @@ header .logo img {
   box-shadow: 0 2px 4px rgba(56, 142, 60, 0.2);
   transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
+
 #paginationControls button:hover:not(.active),
 #paginationControls button:focus:not(.active) {
   background: #4caf50;
   color: #fff;
 }
+
 #paginationControls button.active {
   background: #1b4332;
   color: #fff;
@@ -242,6 +246,7 @@ header .logo img {
   box-shadow: 0 4px 8px rgba(46, 125, 50, 0.6);
   cursor: default;
 }
+
 #paginationControls button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -256,17 +261,22 @@ table {
   border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  table-layout: fixed;
+  min-width: 600px;
 }
+
 th, td {
   padding: var(--spacing-sm);
   border-bottom: 1px solid var(--color-border);
   text-align: left;
   color: var(--color-hover);
 }
+
 th {
   background: var(--color-bg);
   font-weight: 600;
 }
+
 tbody tr:nth-child(even) {
   background: var(--color-bg);
 }
@@ -283,7 +293,6 @@ tbody tr:nth-child(even) {
 }
 
 /* ===== Modals ===== */
-
 .modal-content {
   background: var(--color-surface);
   padding: var(--spacing-md);
@@ -295,6 +304,7 @@ tbody tr:nth-child(even) {
   color: var(--color-hover);
   font-size: 1rem;
 }
+
 .close {
   position: absolute;
   top: var(--spacing-xs);
@@ -307,6 +317,7 @@ tbody tr:nth-child(even) {
   border: none;
   transition: color 0.3s;
 }
+
 .close:hover,
 .close:focus {
   color: var(--color-hover);
@@ -331,6 +342,7 @@ tbody tr:nth-child(even) {
   gap: var(--spacing-sm);
   flex-wrap: wrap;
 }
+
 .admin-actions button {
   background: var(--color-accent);
   color: var(--color-surface);
@@ -342,6 +354,7 @@ tbody tr:nth-child(even) {
   transition: background 0.3s ease;
   user-select: none;
 }
+
 .admin-actions button:hover,
 .admin-actions button:focus {
   background: var(--color-primary);
@@ -352,14 +365,10 @@ tbody tr:nth-child(even) {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-}
-.employeeTable {
-  width: 100%;
-  min-width: auto;
-  border-collapse: collapse;
+  min-height: 400px; /* reserve vertical space */
 }
 
-/* ===== Buttons base style ===== */
+/* ===== Buttons Base Style ===== */
 button {
   background: var(--color-accent);
   color: var(--color-surface);
@@ -372,11 +381,13 @@ button {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
+
 button:hover,
 button:focus {
   background: var(--color-hover);
   box-shadow: 0 5px 12px rgba(27, 67, 50, 0.7);
 }
+
 button:disabled {
   background: var(--color-border);
   cursor: not-allowed;
@@ -396,6 +407,7 @@ button:disabled {
     font-size: 0.85rem;
   }
 }
+
 @media (max-width: 700px) {
   .sidebar {
     grid-column: 1 / -1;
@@ -405,51 +417,64 @@ button:disabled {
     gap: var(--spacing-sm);
   }
 }
+
 @media (max-width: 600px) {
   html, body {
     width: 100%;
     overflow-x: hidden;
   }
+
   header {
     flex-direction: column;
     align-items: flex-start;
     padding: var(--spacing-xs);
   }
+
   header .logo img {
     height: 40px;
   }
+
   .search-section {
     grid-template-columns: 1fr;
   }
+
   .admin-actions {
     flex-direction: column;
   }
+
   .sidebar {
     flex-direction: column;
     align-items: center;
     padding: var(--spacing-md);
   }
+
   .sidebar a {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.9rem;
   }
+
   .summary-card {
     padding: var(--spacing-sm);
   }
+
   th, td {
     padding: 0.25rem 0.5rem;
   }
+
   .modal-content {
     padding: var(--spacing-sm);
     max-width: 90vw;
   }
+
   .close {
     font-size: 1.2rem;
   }
+
   #logEventHistory,
   #employeeListToRemove {
     max-height: 150px;
   }
+
   #paginationControls {
     flex-wrap: wrap;
     gap: var(--spacing-xs);
