@@ -283,18 +283,7 @@ tbody tr:nth-child(even) {
 }
 
 /* ===== Modals ===== */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-sm);
-  overflow-y: auto;
-  backdrop-filter: saturate(180%) blur(8px);
-}
+
 .modal-content {
   background: var(--color-surface);
   padding: var(--spacing-md);
