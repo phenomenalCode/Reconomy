@@ -1,6 +1,10 @@
+UPDATE. The application was previously deployed with the frontend on Netlify and the backend on Heroku. I am currently migrating the backend to Render, so the full system is temporarily unavailable live.
+
+
 Netlify link: https://darius-reconomy-proj.netlify.app/
 Check-in system and admin dashboard designed for Reconomy AB. A full-stack employee time-tracking system built with Node.js, Express, and MySQL, featuring Employee Management , Create, update, and filter employee records Time Logging , Log check-in/out events with optional comments Admin Login , Session-based authentication for protected routes Cross-Origin Support , Fully functional CORS setup for Netlify Heroku deployment, Backend hosted on Heroku, frontend on Netlify
-Made by myself :)
+Designed and developed independently during my internship at Reconomy AB.
+
 
 
 This is a desktop-oriented web application designed for use on desktop and laptop screens. The interface is not optimized for mobile devices, as responsive media queries have not been implemented.
